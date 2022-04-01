@@ -14,6 +14,8 @@ const User = sequelize.define('user', {
   }
 });
 
+Task.belongsTo(User);
+
 
 module.exports = {
   sequelize,
