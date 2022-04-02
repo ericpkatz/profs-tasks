@@ -4,7 +4,8 @@ const sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://localhos
 
 const Task = sequelize.define('task', {
   name: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false
   }
 });
 
