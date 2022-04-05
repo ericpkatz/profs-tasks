@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const Tasks = ({ users, tasks })=> {
+const Tasks = ({ users, tasks, destroy })=> {
   return (
     <ul>
       {
@@ -10,6 +10,7 @@ const Tasks = ({ users, tasks })=> {
           return (
             <li key={ task.id }>
               { task.name }
+              <button onClick={ ()=> destroy(task.id)}>x</button>
               <br />
               ( { user ? user.firstName : '' } )
             </li>
@@ -20,4 +21,12 @@ const Tasks = ({ users, tasks })=> {
   );
 };
 
-export default connect( state => state )(Tasks);
+const mapDispatchToProps = (dispatch)=> {
+  return {
+    destroy: (id)=> {
+      console.log(id);
+    }
+  };
+}
+
+export default connect( state => state, mapDispatchToProps )(Tasks);
