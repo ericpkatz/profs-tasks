@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -24,7 +25,8 @@ const Tasks = ({ users, tasks, destroy })=> {
 const mapDispatchToProps = (dispatch)=> {
   return {
     destroy: (id)=> {
-      console.log(id);
+      axios.delete(`/api/tasks/${id}`);
+      dispatch({ type: 'DELETE_TASK', id });
     }
   };
 }

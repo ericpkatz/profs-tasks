@@ -19,8 +19,10 @@ app.post('/', async(req, res, next)=> {
     next(ex);
   }
 });
+
 app.delete('/:id', async(req, res, next)=> {
   try {
+    console.log('IM HERE --------');
     const task = await Task.findByPk(req.params.id);
     await task.destroy();
     res.sendStatus(204);
