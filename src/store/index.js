@@ -1,4 +1,5 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import logger from 'redux-logger';
 import tasks from './tasks.reducer';
 import users from './users.reducer';
 
@@ -7,6 +8,6 @@ const reducer = combineReducers({
   users: users
 });
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(logger));
 
 export default store;
